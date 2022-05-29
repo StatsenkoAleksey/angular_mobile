@@ -8,13 +8,53 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let hotel of hotels">
-      <ion-avatar item-start>
-        <img src="{{hotel.imageUrl}}">
-      </ion-avatar>
-      <h2>{{hotel.title}}</h2>
-      <p>{{hotel.address}}</p>
-    </button>
-  </ion-list>
+  <ion-item-group>
+    <ion-item>
+      <ion-label item-start fixed>Цена от</ion-label>
+      <ion-input 
+      [(ngModel)]="minCost"
+      (ionChange)="setFilteredItems()"
+      item-end
+      type="number"
+      min="0"
+    ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  item-start fixed>Цена до</ion-label>
+      <ion-input 
+      [(ngModel)]="maxCost"
+      (ionChange)="setFilteredItems()"
+      item-end
+      type="number"
+      min="0"
+    ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label item-start fixed>Парковка</ion-label>
+      <ion-checkbox 
+        [(ngModel)]="hasParking"
+        (ionChange)="setFilteredItems()"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <p>Всего: {{hotels.length}}</p>
+    </ion-item>  
+  </ion-item-group>
+
+  <ion-scroll scrollY="true" style="height: 70%">
+    <ion-list>
+      <button 
+        ion-item 
+        *ngFor="let hotel of hotels" 
+        (click)="openHotelInfoPage(hotel)"
+      >
+        <ion-avatar item-start>
+          <img src="{{hotel.imageUrl}}">
+        </ion-avatar>
+        <h2>{{hotel.title}}</h2>
+        <p>{{hotel.address}}</p>
+      </button>
+    </ion-list>
+  </ion-scroll>
+
 </ion-content>

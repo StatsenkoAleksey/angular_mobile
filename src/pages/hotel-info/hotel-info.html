@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{hotel.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item>
+    <img src="{{hotel.imageUrl}}">
+    <h2>{{hotel.description}}</h2>
+    <h2>Номера от {{hotel.roomCost}} руб</h2>
+    <p>{{hotel.address}}</p>
+    <p *ngIf="hotel.hasParking">Гостевая парковка</p>
+    <p>{{hotel.phone}}</p>
+  </ion-item>
+</ion-content>
